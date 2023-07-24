@@ -1,11 +1,18 @@
-import {applyMiddleware, createStore} from "redux";
+import {applyMiddleware, combineReducers, createStore} from "redux";
 import thunk from "redux-thunk";
 import {createLogger} from "redux-logger/src";
-import {reducer} from "./reducer";
+import {todos} from "./todos/todos";
+import {users} from "./users/users";
+
 
 const logger = createLogger({
     diff: true,
     collapsed: true
 })
 
-export const store = createStore(reducer, applyMiddleware(thunk, logger))
+const rootState = combineReducers({
+    users: users,
+    todos: todos,
+})
+
+export const store = createStore(rootState, applyMiddleware(thunk, logger))

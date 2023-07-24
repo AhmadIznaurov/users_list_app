@@ -4,11 +4,14 @@ import {Todos} from "./Todos";
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
 import { loadTodos, loadUsers} from "../Redux/action";
+import ReactLoading from "react-loading";
+
+
 
 export const App = () => {
     const dispatch = useDispatch();
-    const loadingUsers = useSelector((state) => state.loadingUsers)
-    const loadingTodos = useSelector((state) => state.loadingTodos)
+    const loadingUsers = useSelector((state) => state.users.loadingUsers)
+    const loadingTodos = useSelector((state) => state.todos.loadingTodos)
 
     useEffect(() => {
         dispatch(loadUsers())
@@ -17,8 +20,13 @@ export const App = () => {
 
     if (loadingUsers || loadingTodos) {
         return (
-            <div>
-                Идет загрузка данных...
+            <div className='ReactLoading'>
+                <ReactLoading
+                    type={"spokes"}
+                    color={"red"}
+                    height={200}
+                    width={200}
+                />
             </div>
         )
     }
@@ -31,6 +39,3 @@ export const App = () => {
 }
 
 
-/////
-////
-////

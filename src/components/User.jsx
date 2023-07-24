@@ -10,14 +10,17 @@ export const User = ({user}) =>  {
     }
 
     return (
-        <li onClick={selectUserId}>
+        selectUserId ? <li onClick={selectUserId} class='selected'>
             <div className="user-name">
                 {user.name}
             </div>
             <div className="user-email">
                 {user.email}
             </div>
-        </li>
+        </li> : (
+            ''
+            )
+
     );
 }
 
