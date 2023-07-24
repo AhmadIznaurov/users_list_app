@@ -4,9 +4,9 @@ import {Todo} from "./Todo";
 import {setFilteredText} from "../Redux/action";
 
 export const Todos = (props) => {
-    const todos = useSelector((state) => state.todos)
-    const selectUserId = useSelector((state) => state.selectedUserId)
-    const filter = useSelector((state) => state.filter)
+    const todos = useSelector((state) => state.todos.todos)
+    const selectUserId = useSelector((state) => state.users.selectedUserId)
+    const filter = useSelector((state) => state.todos.filter)
     const dispatch = useDispatch()
     const filteredTodos = todos
         .filter(todo => todo.userId === selectUserId)
