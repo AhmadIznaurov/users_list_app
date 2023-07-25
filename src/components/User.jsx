@@ -1,26 +1,27 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {useDispatch} from "react-redux";
 import {selectId} from "../Redux/action";
 
 export const User = ({user}) =>  {
     const dispatch = useDispatch();
+    const [selectedUserId, setSelectedUserId] = useState(null);
 
     const selectUserId = () => {
-        dispatch(selectId(user.id))
+        setSelectedUserId(user.id);
+        dispatch(selectId(user.id));
     }
 
+    const isSelected = selectedUserId === user.id;
+
     return (
-        selectUserId ? <li onClick={selectUserId} class='selected'>
+        <li onClick={selectUserId} className={isSelected ? 'selected' : ''}>
             <div className="user-name">
                 {user.name}
             </div>
             <div className="user-email">
                 {user.email}
             </div>
-        </li> : (
-            ''
-            )
-
+        </li>
     );
 }
 
