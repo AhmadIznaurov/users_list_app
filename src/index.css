@@ -45,7 +45,7 @@ html, body {
   text-align: center;
 }
 
-.users > ul > li:hover  {
+.users > ul > li.selected {
   background-color: #e1f8ff;
   border-radius: 15px;
 }
