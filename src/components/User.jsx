@@ -1,13 +1,13 @@
 import React, {useState} from 'react';
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {selectId} from "../Redux/action";
 
 export const User = ({user}) =>  {
     const dispatch = useDispatch();
-    const [selectedUserId, setSelectedUserId] = useState(null);
+    const selectedUserId = useSelector((state) => state.users.selectedUserId)
+
 
     const selectUserId = () => {
-        setSelectedUserId(user.id);
         dispatch(selectId(user.id));
     }
 
