@@ -35,7 +35,6 @@ export const loadTodos = () => {
 export const selectId = (userId) => {
     return {
         type: 'select/userId',
-
         payload: userId
     }
 }
