@@ -5,6 +5,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
 import { loadTodos, loadUsers} from "../Redux/action";
 import ReactLoading from "react-loading";
+import {Route, Routes} from "react-router-dom";
 
 
 
@@ -33,7 +34,13 @@ export const App = () => {
   return (
       <div className="container">
           <Users/>
-          <Todos/>
+
+          <Routes>
+              <Route
+                  path='/:id?'
+                  element={<Todos/>}/>
+          </Routes>
+
       </div>
   );
 }
