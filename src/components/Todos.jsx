@@ -14,7 +14,7 @@ export const Todos = (props) => {
         .filter(todo => todo.title.indexOf(filter) > -1)
 
 
-    if (isNaN(id)) {
+    if (!id) { // The changing was here instead isNaN(id) add !id
         return (
             <div className="no_selected_user">
                <span>←</span> Выберите пользователя
