@@ -3,6 +3,10 @@ import {useDispatch, useSelector} from "react-redux";
 import {Todo} from "./Todo";
 import {setFilteredText} from "../Redux/action";
 import {useParams} from "react-router-dom";
+import styles from './Todos.module.css'
+
+
+
 
 export const Todos = (props) => {
     const todos = useSelector((state) => state.todos.todos)
@@ -16,7 +20,7 @@ export const Todos = (props) => {
 
     if (!id) { // The changing was here instead isNaN(id) add !id
         return (
-            <div className="no_selected_user">
+            <div className={styles.no_selected_user}>
                <span>←</span> Выберите пользователя
             </div>
         )
@@ -27,8 +31,8 @@ export const Todos = (props) => {
     }
 
     return (
-        <div className="todos">
-            <div className="filter">
+        <div className={styles.todos}>
+            <div className={styles.filter}>
                 <input
                     type="text"
                     placeholder="Поиск по тексту...."
