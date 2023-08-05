@@ -1,6 +1,7 @@
 import React from 'react';
 import {useSelector} from "react-redux";
 import {Link} from "react-router-dom";
+import styles from './Users.module.css'
 
 export const User = ({user}) =>  {
     const selectedUserId = useSelector((state) => state.users.selectedUserId)
@@ -10,13 +11,13 @@ export const User = ({user}) =>  {
     return (
         <li  className={isSelected ? 'selected' : ''}>
             <Link to={`/${user.id}`}>
-                <div className="user-name">
+                <div className={styles.user_name}>
                     {user.name}
                 </div>
-                <div className="user-email">
-                    {user.email}
-                </div>
             </Link>
+            <div className={styles.user_email}>
+                {user.email}
+            </div>
         </li>
     );
 }
