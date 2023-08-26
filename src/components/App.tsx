@@ -1,22 +1,22 @@
 import '../index.css';
 import {Users} from "./Users";
 import {Todos} from "./Todos";
-import {useDispatch, useSelector} from "react-redux";
-import {useEffect} from "react";
-import { loadTodos, loadUsers} from "../Redux/action";
+import  React, {useEffect} from "react";
 import ReactLoading from "react-loading";
 import {Route, Routes} from "react-router-dom";
+import {useActions} from "../hooks/useActions";
+import {useTypedSelector} from "../hooks/useTypedSelector";
 
 
 
-export const App = () => {
-    const dispatch = useDispatch();
-    const loadingUsers = useSelector((state) => state.users.loadingUsers)
-    const loadingTodos = useSelector((state) => state.todos.loadingTodos)
+export const App: React.FC = () => {
+    const loadingUsers = useTypedSelector((state) => state.users.loadingUsers)
+    const loadingTodos = useTypedSelector((state) => state.todos.loadingTodos)
+    const {loadTodos, loadUsers} = useActions()
 
     useEffect(() => {
-        dispatch(loadUsers())
-        dispatch(loadTodos())
+        loadUsers()
+        loadTodos()
     }, [])
 
     if (loadingUsers || loadingTodos) {

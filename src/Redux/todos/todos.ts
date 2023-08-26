@@ -1,24 +1,26 @@
-const initialState = {
+import {AllActions, initialStateTodos, TodoActionType} from "../../types/types";
+
+const initialState: initialStateTodos = {
     todos: [],
     filter: '',
     loadingTodos: false
 }
 
-export  const todos = (state = initialState, action) => {
+export  const todos = (state = initialState, action: AllActions) => {
     switch (action.type) {
-        case 'load/todos/start':
+        case  TodoActionType.FETCH_TODOS:
             return {
                 ...state,
                 loadingTodos: true
             }
 
-        case 'load/todos/success':
+        case TodoActionType.FETCH_TODOS_SUCCESS:
             return {
                 ...state,
                 loadingTodos: false,
                 todos: action.payload
             }
-        case 'filter/text':
+        case TodoActionType.FETCH_FILTER_TEXT:
             return  {
                 ...state,
                 filter: action.payload
