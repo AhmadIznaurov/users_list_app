@@ -1,23 +1,24 @@
-const initialState = {
+import {AllActions, initialStateUsers, TodoActionType} from "../../types/types";
+
+const initialState: initialStateUsers = {
     users: [],
-    selectedUserId: null,
     loadingUsers: false,
 }
 
-export const users = (state = initialState, action) => {
+export const users = (state = initialState, action: AllActions) => {
     switch (action.type) {
-        case 'load/users/start':
+        case TodoActionType.FETCH_USERS:
             return {
                 ...state,
                 loadingUsers: true
             }
-        case 'load/users/success':
+        case TodoActionType.FETCH_USERS_SUCCESS:
             return {
                 ...state,
                 loadingUsers: false,
                 users: action.payload
             }
-        case 'select/userId':
+        case TodoActionType.FETCH_SELECT_ID:
             return {
                 ...state,
                 selectedUserId: action.payload
