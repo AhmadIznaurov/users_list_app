@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Link} from "react-router-dom";
 import {useTypedSelector} from "../hooks/useTypedSelector";
 
@@ -10,14 +10,16 @@ interface UserProps {
     }
 }
 
-export const User: React.FC<UserProps> = ({user}: UserProps) =>  {
-    const selectedUserId = useTypedSelector((state) => state.users) //selectedUserId
+export const User: React.FC<UserProps> = ({user}: UserProps) => {
+    const selectedUserId = useTypedSelector((state) => state.users.selectedUserId);
+    const [isSelected, setIsSelected] = useState<boolean>(selectedUserId === user.id);
 
-    // const isSelected = selectedUserId === user.id;
-    //className={isSelected ? 'selected' : ''}
+    const handleClick = () => {
+        setIsSelected(!isSelected);
+    };
 
     return (
-        <li>
+        <li className={isSelected ? 'selected' : ''} onClick={handleClick}>
             <Link to={`/${user.id}`}>
                 <div className='user_name'>
                     {user.name}
@@ -29,4 +31,3 @@ export const User: React.FC<UserProps> = ({user}: UserProps) =>  {
         </li>
     );
 }
-

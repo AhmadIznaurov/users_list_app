@@ -31,18 +31,18 @@ export const App: React.FC = () => {
             </div>
         )
     }
-  return (
-      <div className="container">
-          <Users/>
+    return (
+        <div className="container">
+            <Users/>
 
-          <Routes>
-              <Route
-                  path='/:id?'
-                  element={<Todos/>}/>
-          </Routes>
+            <Routes>
+                <Route
+                    path='/:id?'
+                    element={<Todos/>}/>
+            </Routes>
 
-      </div>
-  );
+        </div>
+    );
 }
 
 

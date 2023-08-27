@@ -1,6 +1,7 @@
 export interface initialStateUsers {
     users: any[]
     loadingUsers: boolean
+    selectedUserId: number | null
 }
 
 export interface initialStateTodos {

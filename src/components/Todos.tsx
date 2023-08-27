@@ -46,9 +46,9 @@ export const Todos: React.FC = () => {
             </div>
             <ul>
                 {
-                    filteredTodos.map((todo: TodosTypes) => {
+                    filteredTodos !== undefined ? filteredTodos.map((todo: TodosTypes) => {
                      return <Todo todo={todo} key={todo.id}/>
-                 })
+                 }) : null
                 }
             </ul>
         </div>
