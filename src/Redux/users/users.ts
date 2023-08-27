@@ -3,6 +3,7 @@ import {AllActions, initialStateUsers, TodoActionType} from "../../types/types";
 const initialState: initialStateUsers = {
     users: [],
     loadingUsers: false,
+    selectedUserId: 0
 }
 
 export const users = (state = initialState, action: AllActions) => {
