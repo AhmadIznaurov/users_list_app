@@ -3,9 +3,10 @@ import {Users} from "./Users";
 import {Todos} from "./Todos";
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
-import { loadTodos, loadUsers} from "../Redux/action";
 import ReactLoading from "react-loading";
 import {Route, Routes} from "react-router-dom";
+import { loadUsers } from '../Redux/users/UserSlice'
+import { loadTodos } from '../Redux/todos/TodoSlice'
 
 
 

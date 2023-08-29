@@ -1,16 +1,13 @@
 import React from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {Todo} from "./Todo";
-import {setFilteredText} from "../Redux/action";
 import {useParams} from "react-router-dom";
-import styles from './Todos.module.css'
+import { setFilteredText } from '../Redux/todos/TodoSlice'
 
 
-
-
-export const Todos = (props) => {
+export const Todos = () => {
     const todos = useSelector((state) => state.todos.todos)
-    const filter = useSelector((state) => state.todos.filter)
+    const filter = useSelector((state) => state.todos.filtered)
     const  id  = parseInt(useParams().id)
     const dispatch = useDispatch()
     const filteredTodos = todos
@@ -18,21 +15,21 @@ export const Todos = (props) => {
         .filter(todo => todo.title.indexOf(filter) > -1)
 
 
-    if (!id) { // The changing was here instead isNaN(id) add !id
+    if (!id) {
         return (
-            <div className={styles.no_selected_user}>
+            <div className='no_selected_user'>
                <span>←</span> Выберите пользователя
             </div>
         )
     }
 
     const handleChangeTextFilter = (event) => {
-        dispatch(setFilteredText(event.target.value))
+        dispatch(setFilteredText({text: event.target.value}))
     }
 
     return (
-        <div className={styles.todos}>
-            <div className={styles.filter}>
+        <div className='todos'>
+            <div className='filter'>
                 <input
                     type="text"
                     placeholder="Поиск по тексту...."
